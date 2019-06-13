@@ -1,0 +1,59 @@
+<header>
+	<section class="header-area">
+		<h1 class="headline">Bookers</h1>
+		<nav>
+			<ul class="nav-list">
+				<i class="fa fa-home"></i><li class="nav-list-item">Home</li>
+				<i class="fa fa-user"></i><li class="nav-list-item">Users</li>
+				<i class="fa fa-book"></i><li class="nav-list-item">Books</li>
+				<i class="fa fa-sign-out"></i><li class="nav-list-item">logout</li>
+			</ul>
+		</nav>
+	</section>
+</header>
+
+<main>
+<main-content class="clearfix">
+	<dev class="left-area">
+		<section class="user-area">
+			<h1>User info</h1>
+		</section>
+
+
+		<section class="new-area">
+			<h1>New book</h1>
+
+			<%= form_for(@book) do |f| %>
+				<h2>Title</h2>
+					<%= f.text_field :title %>
+				<h2>Opinion</h2>
+					<%= f.text_area :body %>
+					<%= f.submit 'Create Book' %>
+			<% end %>
+
+		</section>
+	</dev>
+
+	<section class="right-area">
+		<h1>Books</h1>
+		<table>
+			<caption>table title and/or explanatory text</caption>
+			<thead>
+				<tr>
+					<th>header</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>data</td>
+				</tr>
+			</tbody>
+		</table> class="book-area">
+	</section>
+
+</main-content>
+</main>
+
+<footer class="clearfix">
+	<p class="footer-text">CopyRight Infratop.inc</p>
+</footer>
