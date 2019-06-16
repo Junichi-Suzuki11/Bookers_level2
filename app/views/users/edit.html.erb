@@ -1,0 +1,33 @@
+
+<main>
+<main-content class="clearfix">
+	<dev class="left-area">
+		<section class="user-area">
+			<h1>User info</h1>
+			<%= form_for(@user) do |f| %>
+				<h2 class="subtitle">name</h2>
+				<%= f.text_field :name %>
+
+				<%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "user-edit-form" %>
+
+				<h2 class="subtitle">Image</h2>
+
+				<h2 class="subtitle">Introduction</h2>
+				
+				<br>
+				<%= f.submit 'Update User' %>
+			<% end %>
+
+		</section>
+
+		<section class="new-area">
+
+		</section>
+	</dev>
+
+	<section class="right-area">
+
+	</section>
+
+</main-content>
+</main>

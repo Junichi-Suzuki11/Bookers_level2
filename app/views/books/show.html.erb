@@ -1,2 +1,58 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+
+<main>
+<main-content class="clearfix">
+	<dev class="left-area">
+		<section class="user-area">
+			<h1>User info</h1>
+			<%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %>
+			<h2 class="subtitle">name</h2>
+			<br>
+			<h2 class="subtitle">introduction</h2>
+			<br>
+			<%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+			<% if @user.id == current_user.id %>
+        		<%= link_to "プロフィール編集", edit_user_path(@user) %>
+    		<% end %>
+		</section>
+
+		<section class="new-area">
+			<h1>New book</h1>
+
+			<%= form_for(@new_book) do |f| %>
+				<h2 class="subtitle">Title</h2>
+					<%= f.text_field :title %>
+				<h2 class="subtitle">Opinion</h2>
+					<%= f.text_area :body %>
+					<br>
+					<%= f.submit 'Create Book' %>
+			<% end %>
+
+		</section>
+	</dev>
+
+	<section class="right-area">
+		<h1>Book detail</h1>
+		<table>
+			<thead>
+				<tr>
+					<th></th>
+					<th>Title</th>
+					<th>Opinion</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %></td>
+					<td><%= @book.title %></td>
+					<td><%= @book.body %></td>
+					<% if @book.user == current_user %>
+						<td><%= link_to "Edit", edit_book_path(@book.id) %></td>
+						<td><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？" %></td>
+					<% end %>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+</main-content>
+</main>

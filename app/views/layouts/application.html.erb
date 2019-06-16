@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bookers2App</title>
+    <title>Bookers2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,58 @@
   </head>
 
   <body>
+    <header>
+      <section class="header-area">
+        <h1 class="headline">Bookers</h1>
+        <nav>
+          <ul class="nav-list">
+            <!-- サインインしている場合のナビゲーションメニュー -->
+            <% if user_signed_in? %>
+              <i class="fa fa-home"></i>
+              <li class="nav-list-item">
+                <%= link_to "Home", user_path(current_user.id), class: "link-decoration" %>
+              </li>
+              <i class="fa fa-user"></i>
+              <li class="nav-list-item">
+                Users
+              </li>
+              <i class="fa fa-book"></i>
+                <li class="nav-list-item">
+                  <%= link_to "Books", books_path, class: "link-decoration" %>
+                </li>
+              <i class="fa fa-sign-out"></i>
+              <li class="nav-list-item">
+                <%= link_to "logout", destroy_user_session_path, method: :delete, class: "link-decoration" %>
+              </li>
+            <!-- サインインしていない場合のナゲーションメニュー -->
+            <% else %>
+              <i class="fa fa-home"></i>
+              <li class="nav-list-item">
+                Home
+              </li>
+              <i class="fa fa-info"></i>
+              <li class="nav-list-item">
+                About
+              </li>
+              <i class="fa fa-edit"></i>
+              <li class="nav-list-item">
+                <%= link_to "sign up", new_user_registration_path %>
+              </li>
+              <i class="fa fa-sign-in"></i>
+              <li class="nav-list-item">
+                <%= link_to "login", new_user_session_path %>
+              </li>
+            <% end %>
+          </ul>
+        </nav>
+      </section>
+    </header>
+
     <%= yield %>
+
+    <footer class="clearfix">
+      <p class="footer-text">CopyRight Infratop.inc</p>
+    </footer>
+
   </body>
 </html>

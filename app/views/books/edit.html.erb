@@ -1,2 +1,22 @@
-<h1>Books#edit</h1>
-<p>Find me in app/views/books/edit.html.erb</p>
+
+<main>
+<main-content class="clearfix">
+	<dev class="left-area"></dev>
+
+	<section class="right-area">
+		<h1>Editing Book</h1>
+			<%= form_for(@book) do |f| %>
+				<h2 class="subtitle">Title</h2>
+					<%= f.text_field :title %>
+				<h2 class="subtitle">Opinion</h2>
+					<%= f.text_area :body %>
+					<br>
+					<%= f.submit 'Update Book' %>
+			<% end %>
+			<li class="link-text"><%= link_to "Show", book_path(@book.id) %></li>
+			<li class="link-text"><%= link_to "Back", books_path %></li>
+	</section>
+
+</main-content>
+</main>
+
