@@ -36,6 +36,9 @@
 .error-detail {
 	padding-left: 70px;
 }
+.notice {
+	color: green;
+}
 
 /* header */
 header {
@@ -44,7 +47,7 @@ header {
 	background-color: #000;
 }
 .header-area {
-	width: 60%;
+	width: 80%;
 	margin: 0 auto;
 }
 .headline {
@@ -67,13 +70,33 @@ header {
 	color: #C0C0C0;
 }
 
+/* welcomeページ */
+.welcome-area {
+	width: 50%;
+	margin: 0 auto;
+}
+.welcome-title {
+	font-size: 35px;
+	padding-top: 20px;
+}
+.welcome-text {
+	font-size: 14px;
+	padding-bottom: 10px;
+}
+
+/* aboutページ*/
+.about-area {
+	width: 80%;
+	margin: 0 auto;
+}
+
 /* main*/
 
 main {
 	width: 100%;
 }
 main-content {
-	width: 60%;
+	width: 80%;
 	margin: 0 auto;
 }
 

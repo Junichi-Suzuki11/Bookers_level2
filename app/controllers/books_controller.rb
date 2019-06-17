@@ -1,8 +1,12 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!, except: [:welcome]
+
+  def welcome
+  end
 
   def index
   	@book = Book.new
-  	@books = Book.page(params[:page]).reverse_order
+  	@books = Book.all
   end
 
   def create
@@ -10,6 +14,7 @@ class BooksController < ApplicationController
   	@book.user_id = current_user.id
     @books = Book.all
     if @book.save #  dbへ保存
+      flash[:notice] = "You have created book successfully."
       redirect_to book_path(@book.id) # 詳細画面へリダイレクト
     else
       render :index
@@ -19,6 +24,7 @@ class BooksController < ApplicationController
   def show
   	@book = Book.find(params[:id])
     @new_book = Book.new
+
   end
 
   def edit
@@ -26,14 +32,18 @@ class BooksController < ApplicationController
   end
 
   def update
-  	book = Book.find(params[:id])
-  	book.update(book_params)	#更新をdbへ反映
-  	redirect_to book_path(book.id)	#詳細画面へリダイレクト
+  	@book = Book.find(params[:id])
+    if @book.update(book_params)	#更新をdbへ反映
+  	  flash[:notice] = "You have updated book successfully."
+      redirect_to book_path(@book.id)	#詳細画面へリダイレクト
+    else
+      render :edit
+    end
   end
 
   def destroy
   	book = Book.find(params[:id])	#レコードを１件取得
-  	book.destroy	#レコードをdbから削除
+    book.destroy	#レコードをdbから削除
   	redirect_to books_path	#トップページへリダイレクト
   end
 

@@ -23,7 +23,7 @@
               </li>
               <i class="fa fa-user"></i>
               <li class="nav-list-item">
-                Users
+                <%= link_to "Users", users_path, class: "link-decoration" %>
               </li>
               <i class="fa fa-book"></i>
                 <li class="nav-list-item">
@@ -37,11 +37,11 @@
             <% else %>
               <i class="fa fa-home"></i>
               <li class="nav-list-item">
-                Home
+                <%= link_to "Home", root_path %>
               </li>
               <i class="fa fa-info"></i>
               <li class="nav-list-item">
-                About
+                <%= link_to "About", home_about_path %>
               </li>
               <i class="fa fa-edit"></i>
               <li class="nav-list-item">

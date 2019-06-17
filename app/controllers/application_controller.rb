@@ -1,6 +1,15 @@
 class ApplicationController < ActionController::Base
-	before_action :authenticate_user!
+
 	before_action :configure_permitted_parameters, if: :devise_controller?
+
+	# サインアップ後、トップページへリダイレクトする
+	def after_sign_up_path_for(resource)
+		books_path
+	end
+	# サインイン後、トップページへリダイレクトする
+	def after_sign_in_path_for(resource)
+		books_path
+	end
 
   	protected
 

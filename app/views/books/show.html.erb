@@ -1,17 +1,21 @@
 
 <main>
 <main-content class="clearfix">
+	<% if flash[:notice] %>
+      <p><%= flash[:notice] %></p>
+    <% end %>
 	<dev class="left-area">
 		<section class="user-area">
 			<h1>User info</h1>
-			<%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %>
+			<%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %>
 			<h2 class="subtitle">name</h2>
+			<p><%= @book.user.name %></p>
 			<br>
 			<h2 class="subtitle">introduction</h2>
+			<p><%= @book.user.introduction %></p>
 			<br>
-			<%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
-			<% if @user.id == current_user.id %>
-        		<%= link_to "プロフィール編集", edit_user_path(@user) %>
+			<% if @book.user_id == current_user.id %>
+        		<%= link_to "プロフィール編集", edit_user_path(current_user) %>
     		<% end %>
 		</section>
 
@@ -42,7 +46,7 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %></td>
+					<td><%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %></td>
 					<td><%= @book.title %></td>
 					<td><%= @book.body %></td>
 					<% if @book.user == current_user %>

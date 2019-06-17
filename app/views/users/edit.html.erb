@@ -1,33 +1,36 @@
 
 <main>
 <main-content class="clearfix">
-	<dev class="left-area">
 		<section class="user-area">
 			<h1>User info</h1>
+
+			<!-- エラーメッセージがあれば表示する -->
+			<% if @user.errors.any? %>
+						<div class="error-message-area">
+							<h2><%= @user.errors.count %> errors prohibited this obj from being saved:</h2>
+							<ul  class="error-detail">
+							<% @user.errors.full_messages.each do |message| %>
+								<li><%= message %></li>
+							<% end %>
+							</ul>
+						</div>
+			<% end %>
+
 			<%= form_for(@user) do |f| %>
-				<h2 class="subtitle">name</h2>
+				<h2 class="subtitle">Name</h2>
 				<%= f.text_field :name %>
 
+				<h2 class="subtitle">Image</h2>
 				<%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "user-edit-form" %>
 
-				<h2 class="subtitle">Image</h2>
-
 				<h2 class="subtitle">Introduction</h2>
-				
+				<%= f.text_field :introduction %>
+
 				<br>
 				<%= f.submit 'Update User' %>
 			<% end %>
 
 		</section>
-
-		<section class="new-area">
-
-		</section>
-	</dev>
-
-	<section class="right-area">
-
-	</section>
 
 </main-content>
 </main>
