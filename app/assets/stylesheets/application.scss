@@ -16,6 +16,8 @@
  /*
  *= require font-awesome
  */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
 
  /* common */
 * {
@@ -53,7 +55,7 @@ header {
 .headline {
 	color: #FFF;
 	float: left;
-	font-size: 16px;
+	font-size: 20px;
 }
 .nav-list {
 	float: right;
@@ -99,30 +101,26 @@ main-content {
 	width: 80%;
 	margin: 0 auto;
 }
-
-.left-area {
-	width: 25%;
-	float: left;
-	margin: 20px 0;
+/* ユーザプロフィール部分 */
+.link-area {
+	padding-bottom: 30px;
 }
 
-.user-area {
-
-}
 /* 新規投稿部分 */
-.new-area {
+.form-area1 {
+	padding-bottom: 30px;
 }
 
-.subtitle {
-	font-size: 10px;
+.form-area2 {
+	padding-top: 30px;
+	padding-bottom: 40px;
 }
+
 
 /* book部分*/
 .right-area {
 	width: 75%;
 	float: right;
-	margin: 20px 0;
-	padding: 10px 0;
 }
 table {
 	width: 100%;
@@ -137,10 +135,14 @@ table td {
 .link-text {
 	padding: 0 10px;
 	display: inline;
-	font-size: 12px;
+	font-size: 14px;
 }
 .link-text:last-child {
 	border-left: 1px solid black;
+}
+.edit-link-decoration {
+	text-decoration: none;
+	color: #555555;
 }
 
 /* footer */

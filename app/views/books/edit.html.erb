@@ -2,9 +2,9 @@
 <main>
 <main-content class="clearfix">
 
-	<dev class="left-area"></dev>
+	<dev class="col-xs-3"></dev>
 
-	<section class="right-area">
+	<section class="col-xs-6">
 		<h1>Editing Book</h1>
 
 		<!-- エラーメッセージがあれば表示する -->
@@ -19,15 +19,21 @@
 					</div>
 		<% end %>
 		<%= form_for(@book) do |f| %>
-			<h2 class="subtitle">Title</h2>
-				<%= f.text_field :title %>
-			<h2 class="subtitle">Opinion</h2>
-				<%= f.text_area :body %>
-				<br>
-				<%= f.submit 'Update Book' %>
+			<div class="form-area1">
+				<label for="book_title">Title</label>
+				<%= f.text_field :title, class: 'col-xs-12' %>
+			</div>
+			<div class="form-area1">
+				<label for="book_opinion">Opinion</label>
+				<%= f.text_area :body, class: 'col-xs-12' %>
+			</div>
+			<div class="form-area2">
+				<%= f.submit "Update Book", class: "btn btn-primary col-xs-12" %>
+			</div>
 		<% end %>
-		<li class="link-text"><%= link_to "Show", book_path(@book.id) %></li>
-		<li class="link-text"><%= link_to "Back", books_path %></li>
+
+		<li class="link-text"><%= link_to "Show", book_path(@book.id), class: 'edit-link-decoration' %></li>
+		<li class="link-text"><%= link_to "Back", books_path, class: 'edit-link-decoration' %></li>
 	</section>
 
 </main-content>

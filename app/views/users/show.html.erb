@@ -4,41 +4,17 @@
 	<% if flash[:notice] %>
       	<p><%= flash[:notice] %></p>
     <% end %>
-	<dev class="left-area">
-
-		<section class="user-area">
-			<h1>User info</h1>
-			<%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %>
-			<h2 class="subtitle">name</h2>
-				<p><%= current_user.name %></p>
-			<br>
-			<h2 class="subtitle">Introduction</h2>
-				<p><%= current_user.introduction %></p>
-			<br>
-			<% if @user.id == current_user.id %>
-				<%=link_to "プロフィール編集", edit_user_path(current_user) %>
-			<% end %>
-		</section>
-
-
-		<section class="new-area">
-			<h1>New book</h1>
-
-			<%= form_for(@new_book) do |f| %>
-				<h2 class="subtitle">Title</h2>
-					<%= f.text_field :title %>
-				<h2 class="subtitle">Opinion</h2>
-					<%= f.text_area :body %>
-					<br>
-					<%= f.submit 'Create Book' %>
-			<% end %>
-
-		</section>
+    <!-- 左部分 -->
+	<dev class="col-xs-3">
+			<!-- ユーザプロフィール部分 -->
+			<%= render 'books/user_info' %>
+			<!-- 新規投稿部分 -->
+			<%= render 'books/new_book', book: @book %>
 	</dev>
-
-	<section class="right-area">
+	<!-- 右部分 -->
+	<section class="col-xs-9">
 		<h1>Books</h1>
-		<table>
+		<table class ="table table-hover table-inverse">
 			<thead>
 				<tr>
 					<th></th>
