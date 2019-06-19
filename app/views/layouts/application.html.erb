@@ -17,39 +17,39 @@
           <ul class="nav-list">
             <!-- サインインしている場合のナビゲーションメニュー -->
             <% if user_signed_in? %>
-              <i class="fa fa-home"></i>
+              <i class="glyphicon glyphicon-home"></i>
               <li class="nav-list-item">
                 <%= link_to "Home", user_path(current_user.id), class: "link-decoration" %>
               </li>
-              <i class="fa fa-user"></i>
+              <i class="glyphicon glyphicon-user"></i>
               <li class="nav-list-item">
                 <%= link_to "Users", users_path, class: "link-decoration" %>
               </li>
-              <i class="fa fa-book"></i>
+              <i class="glyphicon glyphicon-book"></i>
                 <li class="nav-list-item">
                   <%= link_to "Books", books_path, class: "link-decoration" %>
                 </li>
-              <i class="fa fa-sign-out"></i>
+              <i class="glyphicon glyphicon-log-out"></i>
               <li class="nav-list-item">
                 <%= link_to "logout", destroy_user_session_path, method: :delete, class: "link-decoration" %>
               </li>
             <!-- サインインしていない場合のナゲーションメニュー -->
             <% else %>
-              <i class="fa fa-home"></i>
+              <i class="glyphicon glyphicon-home"></i>
               <li class="nav-list-item">
-                <%= link_to "Home", root_path %>
+                <%= link_to "Home", root_path, class: "link-decoration" %>
               </li>
-              <i class="fa fa-info"></i>
+              <i class="glyphicon glyphicon-link"></i>
               <li class="nav-list-item">
-                <%= link_to "About", home_about_path %>
+                <%= link_to "About", home_about_path, class: "link-decoration" %>
               </li>
-              <i class="fa fa-edit"></i>
+              <i class="glyphicon glyphicon-edit"></i>
               <li class="nav-list-item">
-                <%= link_to "sign up", new_user_registration_path %>
+                <%= link_to "sign up", new_user_registration_path, class: "link-decoration" %>
               </li>
-              <i class="fa fa-sign-in"></i>
+              <i class="glyphicon glyphicon-log-in"></i>
               <li class="nav-list-item">
-                <%= link_to "login", new_user_session_path %>
+                <%= link_to "login", new_user_session_path, class: "link-decoration" %>
               </li>
             <% end %>
           </ul>
@@ -59,8 +59,10 @@
 
     <%= yield %>
 
-    <footer class="clearfix">
-      <p class="footer-text">CopyRight Infratop.inc</p>
+    <footer>
+      <dev class="col-lg-9">
+          <p class="footer-text">CopyRight Infratop.inc</p>
+      </dev>
     </footer>
 
   </body>

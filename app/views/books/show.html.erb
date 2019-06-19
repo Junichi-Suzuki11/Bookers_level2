@@ -5,29 +5,49 @@
       <p><%= flash[:notice] %></p>
     <% end %>
     <!-- 左部分 -->
-	<dev class="col-xs-3">
+	<dev class="col-lg-3">
 			<!-- ユーザプロフィール部分 -->
-			<%= render 'books/user_info' %>
+			<h1>User info</h1>
+			<%= attachment_image_tag @book.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
+			<table class="table">
+				<tbody>
+					<tr>
+						<th>name</th>
+						<th><%= @book.user.name %></th>
+					</tr>
+					<tr>
+						<th>introduction</th>
+						<th><%= @book.user.introduction %></th>
+					</tr>
+				</tbody>
+			</table>
+			<div class="link-area">
+				<% if @book.user == current_user %>
+					<%= link_to "", edit_user_path(current_user), class: 'col-lg-12 btn btn-default glyphicon glyphicon-wrench'%>
+				<% else %>
+					<%= link_to "", user_path(current_user), class: 'col-lg-12 btn btn-default glyphicon glyphicon-wrench'%>
+				<% end %>
+			</div>
 			<!-- 新規投稿部分 -->
 			<h1>New book</h1>
 
 			<%= form_for(@new_book) do |f| %>
 				<div class="form-area1">
 					<label for="book_title">Title</label>
-					<%= f.text_field :title, class: 'col-xs-12' %>
+					<%= f.text_field :title, class: 'col-lg-12' %>
 				</div>
 				<div class="form-area1">
 					<label for="book_opinion">Opinion</label>
-					<%= f.text_area :body, class: 'col-xs-12' %>
+					<%= f.text_area :body, class: 'col-lg-12' %>
 				</div>
 				<div class="form-area2">
-					<%= f.submit "Create Book", class: "btn btn-primary col-xs-12" %>
+					<%= f.submit "Create Book", class: "btn btn-primary col-lg-12" %>
 				</div>
 			<% end %>
 	</dev>
 
 	<!-- 右部分 -->
-	<section class="col-xs-9">
+	<section class="col-lg-9">
 		<h1>Book detail</h1>
 		<table class ="table table-hover table-inverse">
 			<thead>
@@ -49,6 +69,7 @@
 				</tr>
 			</tbody>
 		</table>
+		<%= link_to @book.user.name, user_path(@book.user) %>
 	</section>
 
 </main-content>

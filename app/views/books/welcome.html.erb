@@ -1,20 +1,17 @@
-<main>
-	<main-content class="clearfix">
-		<% if flash[:notice] %>
-			<p class="notice"><%= flash[:notice] %></p>
-		<% end %>
+<div class="container">
+	<% if flash[:notice] %>
+		<p class="notice"><%= flash[:notice] %></p>
+	<% end %>
+	<dev class="row">
 		<section class="welcome-area">
-
-			<h1 class="welcome-title">welcome to <i class="fa fa-book"></i>Bookers&emsp;!!</h1>
-			<p class="welcome-text">In <i class="fa fa-book"></i><b>Bookers</b>,</p>
+			<h1 class="welcome-title">welcome to <i class="glyphicon glyphicon-book"></i>Bookers&emsp;!!</h1>
+			<p class="welcome-text">In <i class="glyphicon glyphicon-book"></i><b>Bookers</b>,</p>
 			<p class="welcome-text">you can share and exchange opinions, inpressions, and emotions</p>
 			<p class="welcome-text">about various books!</p>
-			<%= link_to "Log in", new_user_session_path %>
-			<br>
-			<%= link_to "Sign up", new_user_registration_path %>
-
+			<%= link_to "Log in", new_user_session_path, class: 'btn btn-info text-muted col-lg-10 col-lg-offset-1' %>
+			<%= link_to "Sign up", new_user_registration_path, class: 'btn btn-success col-lg-10 col-lg-offset-1' %>
 		</section>
-	</main-content>
-</main>
+	</dev>
+</div>
 
 

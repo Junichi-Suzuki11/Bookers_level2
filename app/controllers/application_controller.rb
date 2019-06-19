@@ -2,13 +2,13 @@ class ApplicationController < ActionController::Base
 
 	before_action :configure_permitted_parameters, if: :devise_controller?
 
-	# サインアップ後、トップページへリダイレクトする
+	# サインアップ後、ユーザページへリダイレクトする
 	def after_sign_up_path_for(resource)
-		books_path
+		user_path(current_user.id)
 	end
 	# サインイン後、トップページへリダイレクトする
 	def after_sign_in_path_for(resource)
-		books_path
+		user_path(current_user.id)
 	end
 
   	protected

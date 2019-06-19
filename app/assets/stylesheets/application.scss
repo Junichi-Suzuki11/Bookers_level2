@@ -42,6 +42,14 @@
 	color: green;
 }
 
+/* サインアップ、ログインページ　*/
+.field {
+	padding-bottom: 10px;
+}
+.actions {
+	padding-bottom: 10px;
+}
+
 /* header */
 header {
 	width: 100%;
@@ -49,7 +57,7 @@ header {
 	background-color: #000;
 }
 .header-area {
-	width: 80%;
+	width: 60%;
 	margin: 0 auto;
 }
 .headline {
@@ -71,6 +79,22 @@ header {
 	text-decoration: none;
 	color: #C0C0C0;
 }
+/* footer */
+footer {
+	width: 100%;
+	height: 30px;
+}
+.footer-area {
+	width: 500px;
+	margin: 0 auto;
+	border: 1px solid black;
+}
+.footer-text {
+	float: right;
+	color: #000;
+	font-size: 14px;
+	line-height: 30px;
+}
 
 /* welcomeページ */
 .welcome-area {
@@ -85,10 +109,13 @@ header {
 	font-size: 14px;
 	padding-bottom: 10px;
 }
+.welcome-link-decoration {
+	color: #555555;
+}
 
 /* aboutページ*/
 .about-area {
-	width: 80%;
+	width: 60%;
 	margin: 0 auto;
 }
 
@@ -98,7 +125,7 @@ main {
 	width: 100%;
 }
 main-content {
-	width: 80%;
+	width: 60%;
 	margin: 0 auto;
 }
 /* ユーザプロフィール部分 */
@@ -118,10 +145,6 @@ main-content {
 
 
 /* book部分*/
-.right-area {
-	width: 75%;
-	float: right;
-}
 table {
 	width: 100%;
 }
@@ -131,7 +154,7 @@ table th {
 table td {
 }
 
-/* Editページ */
+/* Book Editページ */
 .link-text {
 	padding: 0 10px;
 	display: inline;
@@ -145,16 +168,3 @@ table td {
 	color: #555555;
 }
 
-/* footer */
-footer {
-	width: 100%;
-	height: 30px;
-}
-
-.footer-text {
-	text-align: right;
-	padding-right: 200px;
-	color: #000;
-	font-size: 14px;
-	line-height: 30px;
-}
