@@ -67,9 +67,59 @@
 						<td><%= link_to "Destroy", book_path(@book.id), class: 'btn-sm btn-danger' , method: :delete, "data-confirm" => "本当に消しますか？" %></td>
 					<% end %>
 				</tr>
+
 			</tbody>
 		</table>
-		<%= link_to @book.user.name, user_path(@book.user) %>
+		<span>投稿者：<%= link_to @book.user.name, user_path(@book.user) %></span>
+		<br><br>
+		<!-- いいね機能実装 -->
+		<% if @book.favorited_by?(current_user) %>
+				<%= link_to book_favorites_path(@book), method: :delete do %>
+					<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+					<%= @book.favorites.count %> いいね
+				<% end %>
+		<% else %>
+				<%= link_to book_favorites_path(@book), method: :post do %>
+					<i class="fa fa-heart-o" aria-hidden="true"></i>
+					<%= @book.favorites.count %> いいね
+				<% end %>
+		<% end %>
+
+		<br><br>
+		<!-- コメント欄を実装 -->
+		<div class="comment-list bt style-2" id="comments">
+	    <div class="float-wrapper">
+	        <h2 class="comment-count"><%= @book.post_comments.count %>件コメント</h2>
+	    </div>
+	    <table class ="table table-hover table-inverse">
+	    	<thead>
+				<tr>
+					<th></th>
+					<th>ユーザ名</th>
+					<th>コメント</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @book.post_comments.each do |post_comment| %>
+					<tr>
+						<th><%= attachment_image_tag post_comment.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></th>
+				   		<th><%= post_comment.user.name %></a></th>
+				   		<th><%= post_comment.comment %></th>
+				   	</tr>
+		   		<% end %>
+		   	</tbody>
+		</table>
+
+		<%= form_for [@book, @post_comment] do |f| %>
+			<div class="row">
+		        <div class="col-sm-12">
+		            <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+		        </div>
+		    </div>
+		    <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+		<% end %>
+
+		
 	</section>
 
 </main-content>
